@@ -1,0 +1,88 @@
+#fnatic body {
+    background-color: black;
+    color: white;
+}
+
+body nav {
+    background-color: black;
+    color: white;
+}
+
+body nav a {
+    color: white;
+}
+
+body nav a:hover {
+    color: #FF5900;
+}
+
+.btn-primary {
+    background-color: #FF5900;
+    color: black;
+    border-color: #FF5900;
+}
+
+.btn-primary:hover {
+    background-color: black;
+    color: white;
+    border-color: #FF5900;
+}
+
+main a {
+    color: #FF5900;
+    text-decoration: underline;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgb(18,19,20);
+    color: rgb(160,163,166);
+}
+
+.white-text {
+    color: white;
+}
+
+th {
+    background-color: rgb(6,7,8);
+    color: white;
+    cursor: pointer;
+  }
+
+th:hover {
+    background-color: rgb(60,60,60);
+}
+
+.img-fluid {
+    max-width: 70px;
+    max-height: 70px;
+}
+
+fnatic-blk {
+    background-color: #000000;
+}
+
+fnatic-orange {
+    background-color: #FF5900;
+}
+
+@font-face {
+font-family: 'Druk Wide Web';
+src: url('./font/Druk-Medium-Web.woff2') format('woff2'),
+url('./font/Druk-MediumItalic-Web.woff') format('woff');
+font-weight: 500;
+font-style: normal;
+font-stretch: normal;
+}
+
+.DrukWide-Medium-Web {
+font-family: 'Druk Wide Web';
+font-weight: 500;
+font-style: normal;
+font-stretch: normal;
+}
+
+nav .fa-bars {
+    color: white;
+}
