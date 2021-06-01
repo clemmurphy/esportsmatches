@@ -1,0 +1,19 @@
+APP
+X Implement user registration, login and session tracking
+X Implement selecting and updating followed titles on registration
+
+LAYOUT
+X Implement state changing nav bar with login and register/logout buttons depending on session status
+- Implement Fnatic styles and logos
+
+INDEX
+- Properly format match date/time format to local timezone via JavaScript
+- Implement match table sorting via JavaScript
+
+USER 
+X Implement user settings page, allowing users to change the titles they follow
+
+EXTENSIONS
+- Light/dark mode toggle buttons
+- Twitter feed
+- Player database/teams pages
