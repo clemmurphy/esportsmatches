@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}
+  User Settings
+{% endblock %}
+
+{% block main %}
+    <div class="container-sm text-left">
+        <h1 class="DrukWide-Medium-Web">User Settings</h1>
+        <br>
+        {% if usermessage == True %}
+            <div class="alert alert-success" role="alert">Settings updated!</div>
+            <br>
+        {% endif %}
+        <form action="/settings" method="post">
+            <div class="form-group">
+                <h3>Update Password:</h3>
+                <br>
+                <input class="form-control" name="change_password" placeholder="New Password" type="password">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="confirm_change_password" placeholder="Confirm Password" type="password">
+            </div>
+            <br>
+            <div class="form-group">
+                <h3>Your titles:</h3>
+                <br>
+                <input type="checkbox" id="lol" name="lol" value="1" {{ 'checked' if  usersettings["lol"] == 1 }}>
+                <label for="lol"> League of Legends</label><br>
+                <input type="checkbox" id="csgo" name="csgo" value="1" {{ 'checked' if  usersettings["csgo"] == 1 }}>
+                <label for="csgo"> CS:GO</label><br>
+                <input type="checkbox" id="r6" name="r6" value="1" {{ 'checked' if  usersettings["r6"] == 1 }}>
+                <label for="r6"> Rainbow 6: Siege</label><br>
+                <input type="checkbox" id="dota" name="dota" value="1" {{ 'checked' if  usersettings["dota"] == 1 }}>
+                <label for="dota"> Dota 2</label><br>
+                <input type="checkbox" id="valorant" name="valorant" value="1" {{ 'checked' if  usersettings["valorant"] == 1 }}>
+                <label for="valorant"> Valorant</label><br>
+            </div>
+            <button class="btn btn-primary" type="submit">Update</button>
+        </form>
+    </div>
+
+{% endblock %}

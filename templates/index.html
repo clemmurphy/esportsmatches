@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+{% block title %}
+  Home
+{% endblock %}
+
+{% block main %}
+<main id="content">
+  <div class="table-responsive-sm">
+    <h1 class="DrukWide-Medium-Web">Upcoming Matches</h1>
+    <br>
+    <table class="table table-striped text-center" id="matchtable">
+      <thead>
+          <tr>
+              <th data-type="string">Tournament</th>
+              <th data-type="string">Opponent</th>
+              <th data-type="string">Team</th>
+              <th data-type="number">Start Time</th>
+              <th data-type="string">Format</th>
+              <th data-type="string">Stream</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for x in matches %}
+          <tr>
+              <td>
+                  <img src={{ x.league_image_url }} class="img-fluid">
+                  <br>
+                  <a href={{ x.league_url }}>{{ x.league_name }}</a>
+              </td>
+              <td>
+                  <img src={{ x.opponent_image_url }} class="img-fluid">
+                  <br>
+                  {{ x.opponent_name }}
+              </td>
+              <td>
+                  {{ x.videogame }}
+              </td>
+              <td class="startdate">
+                  <h4 class="white-text">{{ x.starttime }}</h4>
+                  {{ x.startdate }}
+              </td>
+              <td>
+                  BO{{ x.number_of_games }}
+              </td>
+              <td>
+                  <a href={{ x.en_stream_url }}>Watch Live</a>
+              </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+  </div>
+  {% if not matches[0] %}
+    <div class="container text-center">
+      <h2 class="lead">There are no upcoming matches to display! You can check your <a href="/settings">settings</a> to see other titles!</h2>
+    </div>
+    <br>
+  {% endif %}
+  <script>
+    
+    // // sort by first column on content load
+    // document.addEventListener("DOMContentLoaded", function(){
+    //   sortTable(3, 'string')
+    //   console.log("Table sorted by date")
+    // });
+
+    matchtable.onclick = function(e) {
+      if (e.target.tagName != 'TH') return;
+
+      let th = e.target;
+      // if TH, then sort
+      // cellIndex is the number of th:
+      //   0 for the first column
+      //   1 for the second column, etc
+      sortTable(th.cellIndex, th.dataset.type);
+    };
+
+    function sortTable(colNum, type) {
+      let tbody = matchtable.querySelector('tbody');
+
+      let rowsArray = Array.from(tbody.rows);
+
+      // compare(a, b) compares two rows, need for sorting
+      let compare;
+
+      switch (type) {
+        case 'number':
+          compare = function(rowA, rowB) {
+            return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML;
+          };
+          break;
+        case 'string':
+          compare = function(rowA, rowB) {
+            return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML ? 1 : -1;
+          };
+          break;
+      }
+
+      // sort
+      rowsArray.sort(compare);
+
+      tbody.append(...rowsArray);
+    }
+  </script>
+</main>
+{% if loginstatus == False %}
+<div class="alert alert-warning position-sticky fixed-bottom">You are not logged in. Click <a href="/login">here</a> to log in or click <a href="/register">here</a> to register.</div>
+{% endif %}
+{% endblock %}

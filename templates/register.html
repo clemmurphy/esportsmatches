@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}
+  Register
+{% endblock %}
+
+{% block main %}
+    <div class="container col-10 justify-content-center">
+        <h1 class="DrukWide-Medium-Web">Register</h1>
+        <br>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="password" placeholder="Password" type="password">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="confirm_password" placeholder="Confirm Password" type="password">
+            </div>
+            <br>
+            <div class="form-group">
+                <h2>Choose your titles:</h2>
+                <br>
+                <input type="checkbox" id="lol" name="lol" value="1">
+                <label for="lol"> League of Legends</label><br>
+                <input type="checkbox" id="csgo" name="csgo" value="1">
+                <label for="csgo"> CS:GO</label><br>
+                <input type="checkbox" id="r6" name="r6" value="1">
+                <label for="r6"> Rainbow 6: Siege</label><br>
+                <input type="checkbox" id="dota" name="dota" value="1">
+                <label for="dota"> Dota 2</label><br>
+                <input type="checkbox" id="valorant" name="valorant" value="1">
+                <label for="valorant"> Valorant</label><br>
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+    </div>
+{% endblock %}
